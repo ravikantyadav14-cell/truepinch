@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main, feature/* ]
+    branches: [ main, 'feature/*' ]
   pull_request:
     branches: [ main ]
 
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
           cache: 'npm'
       - name: Install
         run: npm ci
@@ -27,7 +27,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: node-version: 18, cache: 'npm'
+        with:
+          node-version: '18'
+          cache: 'npm'
       - name: Install functions deps
         run: |
           cd functions
@@ -45,7 +47,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
       - name: Install firebase-tools
         run: npm install -g firebase-tools
       - name: Deploy functions
