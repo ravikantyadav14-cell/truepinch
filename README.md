@@ -48,3 +48,30 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Server & Security
+
+This repo includes an example Cloud Functions folder `functions/` and `firestore.rules` sample rules.
+
+- Deploy functions:
+  1. Install firebase-tools globally: `npm install -g firebase-tools`
+  2. Authenticate: `firebase login`
+  3. From repo root: `cd functions && npm ci`
+  4. Deploy: `firebase deploy --only functions`  (ensure your Firebase project is set)
+
+- Deploy rules:
+  `firebase deploy --only firestore:rules`
+
+CI notes:
+- GitHub Actions will run lint and tests. If you want to auto-deploy functions from CI, set the `FIREBASE_TOKEN` secret in GitHub repo settings.
+
+
+### Running function unit tests locally
+From the repo root:
+1. Install function deps:
+   cd functions
+   npm ci
+2. Run tests:
+   npm test
+
+CI will run the same tests for PRs.
